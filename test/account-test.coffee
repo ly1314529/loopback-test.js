@@ -17,10 +17,11 @@ apiUrl  = rootUrl + config.apiPath #+ 'Accounts/'
 #debugReq.startDebug()
 
 genUser = ->
-  username: faker.name.findName()
-  password: faker.internet.password()
-  mobile: faker.phone.phoneNumber()
-  email: faker.internet.email()
+    username: 'test3'
+    #username是wei'yi唯一的
+    password: 'test123456'
+    mobile: '15888888888'
+
 
 class Account
   inherits Account, API
@@ -57,13 +58,13 @@ class Account
 describe "Account", ->
   account = new Account()
   user =
-    username: faker.name.findName()
-    password: faker.internet.password()
-    mobile: faker.phone.phoneNumber()
-    email: faker.internet.email()
+      username: 'test1'
+      password: 'test123456'
+      mobile: '15888888888'
 
   before '创建新账号', ->
-    account.register user
+    account.register user = { "username": "test1","password": "test123456","mobile": "15888888888" }
+  
   after '删除新账号', ->
     if user.id
       if account.accessToken?
